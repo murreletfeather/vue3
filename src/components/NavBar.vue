@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+         <div class="container">  <!-- 使标签靠中间一点 -->
             <a class="navbar-brand" href="#">Myspace</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
