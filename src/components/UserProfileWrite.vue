@@ -20,7 +20,7 @@ export default{
             content.value = '';
         };
 
-        return {
+        return {  
             content,
             post_a_post,
         }

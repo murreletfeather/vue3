@@ -1,13 +1,11 @@
 <template>
   <ContentBase>
     首页
-  </ContentBase>
+  </ContentBase> 
 </template>
 
-
-
 <script>
-import ContentBase from '../components/ContentBase';
+import ContentBase from  '../components/ContentBase';
 
 export default {
   name: 'HomeView',
@@ -17,4 +15,5 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
