@@ -3,9 +3,10 @@
       <div class="row">
         <div class="col-3">
           <UserProfileInfo @follow="follow" @unfollow="unfollow" v-bind:user="user"/>
+          <UserProfileWrite @post_a_post="post_a_post" />
         </div>
         <div class="col-9">
-          <UserProfilePosts :posts="posts" />
+          <UserProfilePosts  :posts="posts" />
             
 
         </div>
@@ -19,6 +20,7 @@
   import ContentBase from '../components/ContentBase';
   import UserProfileInfo from '@/components/UserProfileInfo';
   import UserProfilePosts from '@/components/UserProfilePosts.vue';
+  import UserProfileWrite from '@/components/UserProfileWrite.vue';
   import { reactive } from 'vue';
   
   export default {
@@ -27,6 +29,7 @@
       ContentBase,
       UserProfileInfo,
       UserProfilePosts,
+      UserProfileWrite,
     },
     setup() {
       const user = reactive({
@@ -70,11 +73,21 @@
         user.followerCount --;
       };
 
+      const post_a_post = (content) => {
+        posts.count++;
+        posts.posts.unshift({
+          id: posts.count,
+          userId: 1,
+          content: content,
+        })
+      }
+
       return {
         user,
         follow,
         unfollow,
         posts, 
+        post_a_post,
       }
     
     }
