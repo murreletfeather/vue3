@@ -5,7 +5,7 @@
           <UserProfileInfo @follow="follow" @unfollow="unfollow" v-bind:user="user"/>
         </div>
         <div class="col-9">
-          <UserProfilePosts />
+          <UserProfilePosts :posts="posts" />
             
 
         </div>
@@ -38,6 +38,26 @@
         is_followed: false,
       });
 
+      const posts = reactive({
+        count:3,
+        posts: [
+          {
+            id: 1, 
+            userId: 1,
+            content: "今天上课云计算，真开心",
+          },
+          {
+            id: 2, 
+            userId: 1,
+            content: "第二条消息",
+          },{
+            id: 3, 
+            userId: 1,
+            content: "第三条消息",
+          },
+        ]
+      })
+
       const follow = () =>{
         if (user.is_followed) return;
         user.is_followed = true;
@@ -54,6 +74,7 @@
         user,
         follow,
         unfollow,
+        posts, 
       }
     
     }
