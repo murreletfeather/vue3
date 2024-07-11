@@ -6,9 +6,10 @@
                     <img class="img-fluid" src="https://cdn.acwing.com/media/user/profile/photo/290141_lg_c281cd9429.jpg" alt="">
                 </div>
                 <div class="col-9">
-                    <div class="username">TIM HUNTER</div>
-                    <div class="fans">粉丝：123</div>
-                    <button type="button" class="btn btn-outline-secondary btn-sm">+关注</button>
+                    <div class="username">{{ fullName }}</div>
+                    <div class="fans">粉丝：{{ user.followerCount }}</div>
+                    <button @click="follow" v-if="!user.is_followed" type="button" class="btn btn-outline-primary btn-sm">+关注</button>
+                    <button @click="unfollow" v-if="user.is_followed" type="button" class="btn btn-outline-dark btn-sm">取消关注</button>
                 </div>
             </div>
         </div>
@@ -17,8 +18,32 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+
 export default{
     name: "UserProfileInfo",
+    props: {
+        user: {
+            type: Object,
+            required: true,
+        },
+    },
+    setup(props, context){
+        let fullName = computed(() => props.user.lastName + " " + props.user.firstName);
+        
+        const follow = () =>{
+            context.emit('follow');
+        }
+        const unfollow = () =>{
+            context.emit('unfollow');
+        }
+
+        return {
+            fullName,
+            follow,
+            unfollow,
+        }
+    }
 }
 </script>
 
