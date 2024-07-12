@@ -1,5 +1,6 @@
 import $ from 'jquery';
-import jwt_decode from 'jwt-decode';
+//import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 const ModuleUser = {
     state: {
@@ -47,7 +48,7 @@ const ModuleUser = {
                 },
                 success(resp) {
                     const { access, refresh } = resp;
-                    const access_obj = jwt_decode(access);
+                    const access_obj = jwtDecode(access);
 
                     setInterval(() => {
                         $.ajax({
